@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Enterprise vendor risk operations dashboard demo">
+  <title>VendorGuard | Enterprise Risk</title>
+  <style>
+    /* Design tokens make the UI easier to scale and maintain across products. */
+    :root{--bg:#f5f7fa;--surface:#fff;--ink:#101828;--muted:#667085;--line:#eaecf0;--brand:#155eef;--good:#039855;--warn:#dc6803;--danger:#d92d20;--radius:14px}
+    *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:14px Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+    .layout{display:grid;grid-template-columns:230px 1fr;min-height:100vh}.sidebar{background:#101828;color:#d0d5dd;padding:24px 16px}.brand{font-size:20px;font-weight:800;color:#fff;margin:0 10px 34px}.nav a{display:block;padding:11px 12px;border-radius:9px;color:inherit;text-decoration:none;margin:3px 0}.nav a.active,.nav a:hover{background:#1d2939;color:#fff}.main{min-width:0}.topbar{height:70px;background:var(--surface);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 32px}.tenant{font-weight:650}.user{display:flex;gap:10px;align-items:center;color:var(--muted)}.avatar{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:#d1e9ff;color:#175cd3;font-weight:700}.content{padding:32px;max-width:1400px;margin:auto}.eyebrow{color:var(--brand);font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:.08em}.title-row{display:flex;justify-content:space-between;gap:20px;align-items:end;margin-bottom:24px}h1{font-size:30px;margin:5px 0 6px;letter-spacing:-.7px}.sub{color:var(--muted);margin:0}.button{border:0;border-radius:9px;background:var(--brand);color:#fff;padding:10px 15px;font-weight:700;cursor:pointer}.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:20px;box-shadow:0 1px 2px #1018280d}.metric-label{color:var(--muted);font-size:13px}.metric-value{font-size:28px;font-weight:750;margin:9px 0}.good{color:var(--good)}.warning{color:var(--warn)}.danger{color:var(--danger)}.section{margin-top:22px}.section-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}.section h2{font-size:17px;margin:0}.link{color:var(--brand);font-weight:650;text-decoration:none}.table-card{overflow:auto}.table{width:100%;border-collapse:collapse;min-width:650px}.table th,.table td{text-align:left;padding:14px 12px;border-bottom:1px solid var(--line)}.table th{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.04em}.pill{display:inline-flex;padding:4px 9px;border-radius:999px;font-size:12px;font-weight:700}.low{background:#ecfdf3;color:#027a48}.medium{background:#fffaeb;color:#b54708}.high{background:#fef3f2;color:#b42318}.footer-note{color:var(--muted);font-size:12px;margin-top:18px}
+    @media(max-width:900px){.layout{grid-template-columns:1fr}.sidebar{display:none}.metrics{grid-template-columns:repeat(2,1fr)}.content{padding:22px}.topbar{padding:0 22px}}
+    @media(max-width:560px){.metrics{grid-template-columns:1fr}.title-row{align-items:start;flex-direction:column}.topbar{height:60px}}
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="brand">VendorGuard</div>
+      <!-- Navigation is intentionally static for this front-end prototype. -->
+      <nav class="nav" aria-label="Main navigation">
+        <a class="active" href="#overview">Overview</a><a href="#vendors">Vendors</a><a href="#compliance">Compliance</a><a href="#reports">Reports</a><a href="#settings">Settings</a>
+      </nav>
+    </aside>
+    <div class="main">
+      <header class="topbar"><div class="tenant">Acme Enterprise · Risk Operations</div><div class="user"><span>Alex Morgan</span><span class="avatar">AM</span></div></header>
+      <main class="content" id="overview">
+        <div class="title-row">
+          <div><div class="eyebrow">Risk operations</div><h1>Vendor risk overview</h1><p class="sub">Monitor third-party exposure, compliance and upcoming renewals.</p></div>
+          <button class="button" onclick="alert('Demo: vendor onboarding workflow would open here.')">+ Add vendor</button>
+        </div>
+
+        <!-- KPI cards give executives a fast, decision-oriented summary. -->
+        <section class="metrics" aria-label="Risk metrics">
+          <article class="card"><div class="metric-label">Active vendors</div><div class="metric-value">248</div><div class="good">↑ 6 this quarter</div></article>
+          <article class="card"><div class="metric-label">High-risk vendors</div><div class="metric-value">12</div><div class="danger">Needs review</div></article>
+          <article class="card"><div class="metric-label">Compliance coverage</div><div class="metric-value">94.8%</div><div class="good">↑ 2.1% this month</div></article>
+          <article class="card"><div class="metric-label">Renewals in 30 days</div><div class="metric-value">17</div><div class="warning">Action required</div></article>
+        </section>
+
+        <section class="section" id="vendors">
+          <div class="section-head"><h2>Priority vendors</h2><a class="link" href="#vendors">View all</a></div>
+          <div class="card table-card">
+            <!-- A real SaaS version would populate this table from a secure API. -->
+            <table class="table"><thead><tr><th>Vendor</th><th>Category</th><th>Risk</th><th>Review date</th><th>Owner</th></tr></thead><tbody>
+              <tr><td>Northstar Cloud</td><td>Infrastructure</td><td><span class="pill high">High</span></td><td>12 Aug 2026</td><td>Priya S.</td></tr>
+              <tr><td>BrightPay Systems</td><td>Payments</td><td><span class="pill medium">Medium</span></td><td>19 Aug 2026</td><td>Daniel K.</td></tr>
+              <tr><td>Atlas Logistics</td><td>Operations</td><td><span class="pill low">Low</span></td><td>03 Sep 2026</td><td>Maria R.</td></tr>
+              <tr><td>SecureSign</td><td>Identity</td><td><span class="pill high">High</span></td><td>08 Sep 2026</td><td>Owen T.</td></tr>
+            </tbody></table>
+          </div>
+        </section>
+        <p class="footer-note">Prototype only. Production deployment should add authentication, authorization, audit logs, encryption, tenant isolation and server-side validation.</p>
+      </main>
+    </div>
+  </div>
+</body>
+</html>
