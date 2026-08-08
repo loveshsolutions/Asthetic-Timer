@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Simple SaaS Dashboard</title>
+  <style>
+    /* Enterprise-style design tokens: keep visual decisions centralized. */
+    :root { --bg:#f6f8fb; --surface:#fff; --text:#172033; --muted:#667085; --brand:#635bff; --border:#e5e7eb; --success:#12b76a; }
+    * { box-sizing:border-box; }
+    body { margin:0; font-family:Inter,system-ui,-apple-system,sans-serif; background:var(--bg); color:var(--text); }
+    .shell { width:min(1100px,92%); margin:auto; }
+    header { padding:28px 0; display:flex; justify-content:space-between; align-items:center; }
+    .logo { font-weight:800; letter-spacing:-.4px; }
+    .badge { background:#eeecff; color:var(--brand); padding:7px 11px; border-radius:999px; font-size:12px; font-weight:700; }
+    h1 { font-size:clamp(32px,6vw,54px); line-height:1; margin:50px 0 14px; letter-spacing:-2px; }
+    .lead { color:var(--muted); max-width:620px; font-size:17px; }
+    .grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin:34px 0; }
+    .card { background:var(--surface); border:1px solid var(--border); border-radius:18px; padding:22px; box-shadow:0 8px 25px rgba(16,24,40,.05); }
+    .label { color:var(--muted); font-size:13px; }
+    .value { font-size:32px; font-weight:750; margin:9px 0; }
+    .positive { color:var(--success); font-size:13px; }
+    .cta { display:inline-block; margin-top:18px; padding:12px 18px; border-radius:10px; background:var(--brand); color:#fff; text-decoration:none; font-weight:700; }
+    footer { padding:30px 0 50px; color:var(--muted); font-size:13px; }
+    @media (max-width:700px) { .grid { grid-template-columns:1fr; } h1 { margin-top:30px; } }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header>
+      <div class="logo">Launchly</div>
+      <span class="badge">Simple SaaS Demo</span>
+    </header>
+
+    <!-- Main product area: intentionally simple so beginners can understand it. -->
+    <section>
+      <h1>Know your product at a glance.</h1>
+      <p class="lead">A tiny SaaS dashboard demonstrating a clean enterprise-style layout without frameworks or build tools.</p>
+      <a class="cta" href="#metrics">View metrics</a>
+    </section>
+
+    <section class="grid" id="metrics" aria-label="Product metrics">
+      <!-- Each card represents one reusable business KPI component. -->
+      <article class="card"><div class="label">Monthly users</div><div class="value">2,480</div><div class="positive">↑ 12.4% this month</div></article>
+      <article class="card"><div class="label">Revenue</div><div class="value">$8.6k</div><div class="positive">↑ 8.1% this month</div></article>
+      <article class="card"><div class="label">Conversion</div><div class="value">6.8%</div><div class="positive">↑ 1.2% this month</div></article>
+    </section>
+
+    <footer>Launchly • Simple static SaaS demo • Built with semantic HTML and CSS</footer>
+  </main>
+</body>
+</html>
