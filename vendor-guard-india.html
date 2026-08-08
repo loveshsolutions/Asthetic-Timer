@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>VendorGuard India — Vendor Risk MVP</title>
+<style>
+/* Enterprise design tokens: keeping visual rules centralized makes future theming safer. */
+:root{--bg:#f4f6f8;--surface:#fff;--text:#17212b;--muted:#667085;--brand:#155eef;--brand-soft:#eff4ff;--danger:#d92d20;--warn:#dc6803;--success:#039855;--border:#e4e7ec;--shadow:0 8px 28px #1018280d}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:14px Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.layout{min-height:100vh;display:grid;grid-template-columns:230px 1fr}.sidebar{background:#101828;color:#d0d5dd;padding:24px 16px}.brand{color:#fff;font-weight:800;font-size:19px;margin:0 8px 28px}.brand span{color:#84adff}.nav{display:grid;gap:5px}.nav button{border:0;background:transparent;color:inherit;text-align:left;padding:11px 12px;border-radius:8px;cursor:pointer}.nav button.active,.nav button:hover{background:#1d2939;color:#fff}.main{min-width:0}.topbar{height:70px;background:var(--surface);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 28px}.company{font-weight:650}.avatar{width:34px;height:34px;border-radius:50%;background:#d1e0ff;color:#1849a9;display:grid;place-items:center;font-weight:700}.content{max-width:1250px;margin:auto;padding:28px}.heading{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:24px}.eyebrow{color:var(--brand);font-size:12px;font-weight:750;text-transform:uppercase;letter-spacing:.08em}.heading h1{font-size:30px;letter-spacing:-.7px;margin:6px 0}.heading p{margin:0;color:var(--muted)}.primary{border:0;background:var(--brand);color:#fff;padding:11px 16px;border-radius:8px;font-weight:700;cursor:pointer}.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px;box-shadow:var(--shadow)}.label{color:var(--muted);font-size:12px}.metric{font-size:27px;font-weight:750;margin:8px 0}.delta{font-size:12px}.up{color:var(--success)}.down{color:var(--danger)}.section{margin-top:22px}.section-title{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}.section-title h2{font-size:16px;margin:0}.table-wrap{overflow:auto}.table{width:100%;border-collapse:collapse;background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden}.table th,.table td{text-align:left;padding:15px 16px;border-bottom:1px solid var(--border);white-space:nowrap}.table th{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;background:#f9fafb}.table tr:last-child td{border-bottom:0}.vendor{font-weight:650}.sub{display:block;color:var(--muted);font-size:11px;margin-top:3px}.pill{display:inline-flex;padding:5px 9px;border-radius:999px;font-size:11px;font-weight:700}.high{background:#fef3f2;color:var(--danger)}.medium{background:#fff6ed;color:var(--warn)}.low{background:#ecfdf3;color:var(--success)}.expiry{color:var(--danger);font-weight:650}.activity{display:grid;grid-template-columns:1fr 1fr;gap:14px}.alert{display:flex;gap:12px;padding:14px 0;border-bottom:1px solid var(--border)}.alert:last-child{border-bottom:0}.dot{width:9px;height:9px;border-radius:50%;margin-top:5px;background:var(--warn);flex:none}.alert strong{display:block}.alert span{display:block;color:var(--muted);font-size:12px;margin-top:3px}@media(max-width:900px){.layout{grid-template-columns:1fr}.sidebar{display:none}.metrics{grid-template-columns:repeat(2,1fr)}.activity{grid-template-columns:1fr}}@media(max-width:560px){.content{padding:18px}.topbar{padding:0 18px}.heading{display:block}.heading .primary{margin-top:16px}.metrics{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="layout">
+<aside class="sidebar">
+  <div class="brand">Vendor<span>Guard</span></div>
+  <!-- Navigation is intentionally static in this MVP; a real app would use route-level authorization. -->
+  <nav class="nav" aria-label="Primary navigation"><button class="active">Overview</button><button>Vendors</button><button>Documents</button><button>Assessments</button><button>Renewals</button><button>Reports</button></nav>
+</aside>
+<main class="main">
+<header class="topbar"><div class="company">ABC Manufacturing Pvt. Ltd. · India</div><div class="avatar" aria-label="Account">AD</div></header>
+<div class="content">
+<section class="heading"><div><div class="eyebrow">Vendor risk command center</div><h1>Good morning, Ankit.</h1><p>Monitor vendor health, documents and upcoming compliance actions.</p></div><button class="primary" onclick="showToast()">+ Add vendor</button></section>
+<section class="metrics" aria-label="Key metrics">
+  <!-- KPI cards are kept small and deterministic so they can later map directly to API metrics. -->
+  <article class="card"><div class="label">Total vendors</div><div class="metric">248</div><div class="delta up">↑ 12 this quarter</div></article>
+  <article class="card"><div class="label">High risk vendors</div><div class="metric">7</div><div class="delta down">Needs attention</div></article>
+  <article class="card"><div class="label">Documents expiring</div><div class="metric">12</div><div class="delta down">Next 30 days</div></article>
+  <article class="card"><div class="label">Vendor spend</div><div class="metric">₹4.2 Cr</div><div class="delta up">FY 2026</div></article>
+</section>
+<section class="section"><div class="section-title"><h2>Priority vendors</h2><span class="label">Updated just now</span></div>
+<div class="table-wrap"><table class="table"><thead><tr><th>Vendor</th><th>Category</th><th>Risk</th><th>Owner</th><th>Next action</th></tr></thead><tbody>
+<tr><td class="vendor">Shree Logistics Pvt. Ltd.<span class="sub">GSTIN · 24XXXXXXX</span></td><td>Logistics</td><td><span class="pill high">High</span></td><td>Rahul Mehta</td><td class="expiry">Insurance expires in 18 days</td></tr>
+<tr><td class="vendor">Apex Facility Services<span class="sub">GSTIN · 27XXXXXXX</span></td><td>Facilities</td><td><span class="pill medium">Medium</span></td><td>Priya Shah</td><td>Annual assessment due</td></tr>
+<tr><td class="vendor">TechNova Systems<span class="sub">GSTIN · 29XXXXXXX</span></td><td>IT Services</td><td><span class="pill low">Low</span></td><td>Arjun Patel</td><td>Review in 74 days</td></tr>
+<tr><td class="vendor">MedSure Supplies<span class="sub">GSTIN · 06XXXXXXX</span></td><td>Medical</td><td><span class="pill high">High</span></td><td>Neha Verma</td><td class="expiry">2 documents missing</td></tr>
+</tbody></table></div></section>
+<section class="section activity"><article class="card"><div class="section-title"><h2>Attention required</h2><span class="pill high">4 items</span></div><div class="alert"><i class="dot"></i><div><strong>Insurance certificate expiring</strong><span>Shree Logistics · 18 days remaining</span></div></div><div class="alert"><i class="dot"></i><div><strong>Vendor documents missing</strong><span>MedSure Supplies · 2 required documents</span></div></div><div class="alert"><i class="dot"></i><div><strong>Assessment overdue</strong><span>Apex Facility Services · 6 days overdue</span></div></div></article>
+<article class="card"><div class="section-title"><h2>India compliance profile</h2><span class="pill low">Configured</span></div><div class="alert"><i class="dot" style="background:var(--success)"></i><div><strong>GSTIN</strong><span>Vendor tax identity field enabled</span></div></div><div class="alert"><i class="dot" style="background:var(--success)"></i><div><strong>PAN</strong><span>Tax identity field enabled</span></div></div><div class="alert"><i class="dot" style="background:var(--success)"></i><div><strong>Udyam / MSME</strong><span>Registration tracking enabled</span></div></div></article></section>
+</div></main></div>
+<script>
+// MVP behavior: keep interactions local until a secure backend/API is introduced.
+function showToast(){alert('Vendor creation flow coming next. This prototype is ready for backend integration.');}
+</script>
+</body></html>
